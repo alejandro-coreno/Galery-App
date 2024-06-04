@@ -18,10 +18,10 @@ const App = () => {
   return (
     <div className='container'>
        
-      { userbd && nuevaCuenta && <Navbar /> }
+      { userbd &&  nuevaCuenta && <Navbar /> }
       
       <Routes>
-        <Route path='/' element={userbd && nuevaCuenta ? <Home /> : <Login />} />
+        <Route path='/' element={ userbd && nuevaCuenta ? <Home /> : <Login /> } />
         <Route element={<ProtectedRoute />}>
           <Route path='/mostrar' element={<Mostrar />} />
           <Route path='/about' element={<h2>Pagina About</h2>} />

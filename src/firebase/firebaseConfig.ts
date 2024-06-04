@@ -17,12 +17,12 @@ import { getStorage, ref } from "firebase/storage";
 // };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAao5Vp4U_objXpUTiN0W8bgy7WWngxglM",
-  authDomain: "sistema-informacion-d1be4.firebaseapp.com",
-  projectId: "sistema-informacion-d1be4",
-  storageBucket: "sistema-informacion-d1be4.appspot.com",
-  messagingSenderId: "167314025297",
-  appId: "1:167314025297:web:898ef32c3e424329f78170"
+  apiKey: "AIzaSyCerueJ8nXvIuSm1ITxBIVavCTCXsq7aEw",
+  authDomain: "galery-app-4dfc5.firebaseapp.com",
+  projectId: "galery-app-4dfc5",
+  storageBucket: "galery-app-4dfc5.appspot.com",
+  messagingSenderId: "1033772054974",
+  appId: "1:1033772054974:web:203a74a5281f944838e1ef"
 };
 
 // Initialize Firebase
@@ -33,3 +33,4 @@ const auth = getAuth();
 const storage = getStorage(app);
 
 export { db, auth, storage, ref };
+
