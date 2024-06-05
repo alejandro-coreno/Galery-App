@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/UserProvider";
 import { UsuarioContext } from "../../interfaces/usuario";
-
+import "./navbar.css"
 
 const Navbar = () => {
 
@@ -17,20 +17,35 @@ const Navbar = () => {
     }
 
     return (
-        <>
-            <NavLink to="/">Inicio</NavLink>
-            <NavLink to="/mostrar">Mostrar</NavLink>
-            <NavLink to="/about">About</NavLink>
+        <div className="navbar">
+
+            <div className="container-img">
+                <img src="" />
+            </div>
+
+            <div className="cont-option">
+                <NavLink to="/">Inicio</NavLink>
+            </div>
+
+            <div className="cont-option">
+                <NavLink to="/mostrar">Mostrar</NavLink>
+            </div>
+
             <button type="button" onClick={handleLogout}>Salir</button>
 
             {
                 userbd?.role === 'administrador' &&
-                <>
-                    <NavLink to="/usuarios">Usuarios</NavLink>
-                    <NavLink to="/users">Users</NavLink>
+                <>  
+                    <div className="cont-option">
+                        <NavLink to="/usuarios">Registro</NavLink>
+                    </div>
+
+                    <div className="cont-option">
+                     <NavLink to="/users">Usuarios</NavLink>
+                    </div>
                 </>
             }
-        </>
+        </div>
     );
 }
 

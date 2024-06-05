@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/UserProvider";
 import { UsuarioContext } from "../../interfaces/usuario";
+import "./home.css"
 
 const Home = () => {
     const { userbd, subirArchivo } = useAuth() as UsuarioContext;
@@ -35,7 +36,7 @@ const Home = () => {
 
 
     return (
-        <>
+        <div className="conteiner-home">
             <h1>Home // ID Usuario: {userbd?.usuario} , Role: {userbd?.role} </h1>
 
             <form action="" onSubmit={ handleSubmit }>
@@ -47,7 +48,7 @@ const Home = () => {
                 </select>
                 <button type="submit">Subir Archivo</button>
             </form>
-        </>
+        </div>
     );
 }
 

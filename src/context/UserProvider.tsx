@@ -22,10 +22,12 @@ export const UserProveedor = ({ children }: Props) => {
     const [user, setUser] = useState<User | null>(null);
     const [userbd, setUserBd] = useState<DocumentData | null>(null);
     const [nuevaCuenta, setNuevaCuenta] = useState<Boolean>(true);
+    const [bandera, setBandera] = useState<Boolean>(false);
 
 
     const login = async (email: string, password: string) =>  {
         const userCredencial: UserCredential = await signInWithEmailAndPassword(auth, email, password);
+        setNuevaCuenta(true);
     }
 
     const obtenerDatosBd = async () => {

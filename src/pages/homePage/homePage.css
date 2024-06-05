@@ -1,0 +1,7 @@
+.container-app{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    padding: 2rem;
+    border: 1px solid green;
+}
