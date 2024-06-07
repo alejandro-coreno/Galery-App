@@ -134,6 +134,7 @@ export const UserProveedor = ({ children }: Props) => {
         registro,
         salir,
         userbd,
+        user,
         nuevaCuenta,
         subirArchivo
     }

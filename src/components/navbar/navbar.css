@@ -7,13 +7,10 @@
     gap: 1rem;
 }
 
-.container-img{
-    width: 100%;
-    height: 10rem;
-    border: 1px solid purple;
+
+.active{
+    color: green;
+    font-weight: bold;
 }
 
-.cont-option{
-    width: 100%;
-    border: 1px solid green;
-}
+

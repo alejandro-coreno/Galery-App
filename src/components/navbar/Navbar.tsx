@@ -1,3 +1,4 @@
+import React from 'react'
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/UserProvider";
 import { UsuarioContext } from "../../interfaces/usuario";
@@ -7,6 +8,7 @@ const Navbar = () => {
 
     const { userbd, salir } = useAuth() as UsuarioContext;
 
+    
     const handleLogout = async () => {
         try {
             await salir();
@@ -31,8 +33,6 @@ const Navbar = () => {
                 <NavLink to="/mostrar">Mostrar</NavLink>
             </div>
 
-            <button type="button" onClick={handleLogout}>Salir</button>
-
             {
                 userbd?.role === 'administrador' &&
                 <>  
@@ -45,8 +45,12 @@ const Navbar = () => {
                     </div>
                 </>
             }
+
+            <div className="cont-option">
+                <NavLink to="/salir" onClick={handleLogout}>Salir</NavLink>
+            </div>
         </div>
     );
 }
 
-export default Navbar;
+export default  React.memo(Navbar);  
