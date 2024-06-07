@@ -39,6 +39,24 @@ const RegistroUsuarios = () => {
         }
     }
 
+    const alertSendEmail = () => {
+        const Toast = Swal.mixin({
+           toast: true,
+           position: "top-end",
+           showConfirmButton: false,
+           timer: 3000,
+           timerProgressBar: true,
+           didOpen: (toast) => {
+             toast.onmouseenter = Swal.stopTimer;
+             toast.onmouseleave = Swal.resumeTimer;
+           }
+         });
+         Toast.fire({
+           icon: "success",
+           title: "¡Se ha enviado enlace de verificacion al correo!"
+         });
+     }
+
     const handleRegistrer = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (email.trim() === '' || password.trim() === '' || nombre.trim() === '' || role === ''){
@@ -60,6 +78,7 @@ const RegistroUsuarios = () => {
             return
         } 
         try {
+            await alertSendEmail();
             await registro(email, password, role, nombre);
             await salir();
             navigate('/');

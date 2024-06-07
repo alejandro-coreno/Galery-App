@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { db, auth, storage, ref } from "../firebase/firebaseConfig";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, User, UserCredential } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, User, UserCredential, sendEmailVerification } from "firebase/auth";
 import { setDoc, doc, getDoc, DocumentData, onSnapshot, addDoc, collection } from "firebase/firestore";
 import { UploadResult, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Usuario } from "../interfaces/usuario";
@@ -22,7 +22,6 @@ export const UserProveedor = ({ children }: Props) => {
     const [user, setUser] = useState<User | null>(null);
     const [userbd, setUserBd] = useState<DocumentData | null>(null);
     const [nuevaCuenta, setNuevaCuenta] = useState<Boolean>(true);
-    const [bandera, setBandera] = useState<Boolean>(false);
 
 
     const login = async (email: string, password: string) =>  {
@@ -79,9 +78,16 @@ export const UserProveedor = ({ children }: Props) => {
             password: password,
             role: role
         }
-        // desestructuramos el id del metodo autenticación
-        const { user: { uid } } = await createUserWithEmailAndPassword(auth, email, password);
-        await setDoc(doc(db, 'usuarios', uid), usuario);
+        try{
+            // desestructuramos el id del metodo autenticación
+            const userCredencial = await createUserWithEmailAndPassword(auth, email, password);
+            await setDoc(doc(db, 'usuarios', userCredencial.user.uid), usuario);
+            await sendEmailVerification(userCredencial.user);
+
+        }
+        catch (error) {
+            console.log( error )
+        }
     }
 
     const subirArchivo = async (file: File | null, carpeta: string) => {
@@ -120,7 +126,12 @@ export const UserProveedor = ({ children }: Props) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, (userCurrent) => {
-            setUser(userCurrent);
+            if (userCurrent) {
+                 if (userCurrent.emailVerified) {
+                     setUser(userCurrent);
+                }
+             }
+            setUser(userCurrent)
         });
     }, []);
 
