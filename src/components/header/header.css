@@ -1,0 +1,11 @@
+.cabezera{
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #6c8ca4;
+}
+
+.title-home{
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+}

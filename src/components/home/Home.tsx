@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/UserProvider";
-import { UsuarioContext } from "../../interfaces/usuario";
+import { useAuth } from "../../context/UserProvider.js";
+import { UsuarioContext } from "../../interfaces/usuario.js";
+import Header from "../header/Header.js"
 import "./home.css"
 
 const Home = () => {
@@ -37,9 +38,10 @@ const Home = () => {
 
     return (
         <div className="conteiner-home">
-            <h1>Home // ID Usuario: {userbd?.usuario} , Role: {userbd?.role} </h1>
 
-            <form action="" onSubmit={ handleSubmit }>
+            <Header />
+            
+            <form action="" className="form" onSubmit={ handleSubmit }>
                 <input type="file" accept=".pdf" name="archivo" id="archivo" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setArchivo(e.target.files![0])} />
                 <select name="carpeta" id="carpeta" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setCarpeta(e.target.value)}>
                     <option value="Carpeta1">Carpeta 1</option>

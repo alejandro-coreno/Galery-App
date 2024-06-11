@@ -4,13 +4,13 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2.2em;
+    background-color: #6c8ca4 ;
 }
 
 
 .active{
-    color: green;
-    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -22,7 +22,20 @@
 
 .cont-option{
     width: 100%;
-    border: 1px solid red;
-    padding: .8rem;
-    border-radius: 10px;
+    height: 3rem;
+    background-color: #b4c4d4;
+    display: flex;
+}
+
+.enlace{
+    text-decoration: none;
+    width: 85%;
+    height: 100%;
+    line-height: 3rem;
+    letter-spacing: 1px;
+    color: #14446c;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
 }

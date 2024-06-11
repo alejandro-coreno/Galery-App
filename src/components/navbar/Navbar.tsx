@@ -26,28 +26,28 @@ const Navbar = () => {
             </div>
 
             <div className="cont-option">
-                <NavLink to="/">Inicio</NavLink>
+                <NavLink to="/" className="enlace">Inicio</NavLink>
             </div>
 
             <div className="cont-option">
-                <NavLink to="/mostrar">Mostrar</NavLink>
+                <NavLink to="/mostrar" className="enlace">Mostrar</NavLink>
             </div>
 
             {
                 userbd?.role === 'administrador' &&
                 <>  
                     <div className="cont-option">
-                        <NavLink to="/usuarios">Registro</NavLink>
+                        <NavLink to="/usuarios" className="enlace">Registro</NavLink>
                     </div>
 
                     <div className="cont-option">
-                     <NavLink to="/users">Usuarios</NavLink>
+                     <NavLink to="/users" className="enlace">Usuarios</NavLink>
                     </div>
                 </>
             }
 
             <div className="cont-option">
-                <NavLink to="/salir" onClick={handleLogout}>Salir</NavLink>
+                <NavLink to="/salir" className="enlace" onClick={handleLogout}>Salir</NavLink>
             </div>
         </div>
     );
