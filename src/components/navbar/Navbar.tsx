@@ -1,7 +1,7 @@
-import React from 'react'
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/UserProvider";
 import { UsuarioContext } from "../../interfaces/usuario";
+import fondoHome from "../../assets/img/fondo-home.jpeg"
 import "./navbar.css"
 
 const Navbar = () => {
@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="navbar">
 
             <div className="container-img">
-                <img src="" />
+                <img src="" className="img" />
             </div>
 
             <div className="cont-option">
@@ -53,4 +53,4 @@ const Navbar = () => {
     );
 }
 
-export default  React.memo(Navbar);  
+export default Navbar;  
