@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/UserProvider";
 import { UsuarioContext } from "../../interfaces/usuario";
-import fondoHome from "../../assets/img/fondo-home.jpeg"
 import "./navbar.css"
 
 const Navbar = () => {

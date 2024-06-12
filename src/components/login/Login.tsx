@@ -18,6 +18,7 @@ const Login = () => {
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
+          width: '25rem',
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true,
@@ -28,7 +29,7 @@ const Login = () => {
         });
         Toast.fire({
           icon: "error",
-          title: "¡Contraseña o correo incorrecto!"
+          title: "¡Correo o contraseña incorrecto!"
         });
         return
       }

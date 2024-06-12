@@ -120,6 +120,7 @@ export const UserProveedor = ({ children }: Props) => {
     const salir = async () => {
         <Navigate to="/" />;
         await signOut(auth);
+        setUser(null);
         setNuevaCuenta(false);
         sessionStorage.clear();
     };

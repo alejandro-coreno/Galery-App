@@ -106,68 +106,76 @@ const RegistroUsuarios = () => {
     <div className="conteiner-registro">
       <Header />
 
-      <form action="" className="" onSubmit={handleRegistrer}>
-        <h2 className="">Registro</h2>
+      <form action="" className="forms-registro" onSubmit={handleRegistrer}>
+        <h2 className="title-registro">Registro Usuarios</h2>
 
-        <div>
-          <input
-            type="text"
-            name="usuario"
-            id="usuario"
-            placeholder="Usuario"
-            value={nombre}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setNombre(e.target.value)
-            }
-          />
+        <div className="column">
+          <div>
+            <input
+              type="text"
+              name="usuario"
+              id="usuario"
+              placeholder="Usuario"
+              value={nombre}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNombre(e.target.value)
+              }
+            />
+          </div>
+
+          <div>
+            <input
+              type="email"
+              name="correo"
+              id="correo"
+              placeholder="Correo Electronico"
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
+            />
+          </div>
         </div>
 
-        <div>
-          <input
-            type="email"
-            name="correo"
-            id="correo"
-            placeholder="Correo Electronico"
-            value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
-          />
-        </div>
+        <div className="column">
+          <div>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Contraseña ********"
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
+            />
+          </div>
 
-        <div>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Contraseña ********"
-            value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value)
-            }
-          />
+          <div>
+            <select
+              name="role"
+              id="role"
+              value={role}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setRole(e.target.value)
+              }
+            >
+              <option value="" disabled defaultValue="">
+                Seleccione un role
+              </option>
+              <option value="administrador">Administrador</option>
+              <option value="analista">Analista</option>
+            </select>
+          </div>
         </div>
+        
+        <div className="column">
+          <div>
+            <button type="submit">Crear Cuenta</button>
+          </div>
+        </div>
+        
 
-        <div>
-          <select
-            name="role"
-            id="role"
-            value={role}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setRole(e.target.value)
-            }
-          >
-            <option value="" disabled defaultValue="">
-              Seleccione un role
-            </option>
-            <option value="administrador">Administrador</option>
-            <option value="analista">Analista</option>
-          </select>
-        </div>
-
-        <div>
-          <button type="submit">Crear Cuenta</button>
-        </div>
       </form>
     </div>
   );
