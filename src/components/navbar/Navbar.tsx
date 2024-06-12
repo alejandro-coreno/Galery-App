@@ -37,11 +37,11 @@ const Navbar = () => {
                 userbd?.role === 'administrador' &&
                 <>  
                     <div className="cont-option">
-                        <NavLink to="/usuarios" className="enlace">Registro</NavLink>
+                        <NavLink to="/registro" className="enlace">Registro</NavLink>
                     </div>
 
                     <div className="cont-option">
-                     <NavLink to="/users" className="enlace">Usuarios</NavLink>
+                     <NavLink to="/usuarios" className="enlace">Usuarios</NavLink>
                     </div>
                 </>
             }

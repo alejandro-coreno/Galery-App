@@ -26,8 +26,8 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/mostrar" element={<Mostrar />} />
         </Route>
-        <Route path="/usuarios" element={<RegistroUsuarios />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/registro" element={<RegistroUsuarios />} />
+        <Route path="/usuarios" element={<Users />} />
         <Route path="/salir" element={<Navigate to="/" />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
