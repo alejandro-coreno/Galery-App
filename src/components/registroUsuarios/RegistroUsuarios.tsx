@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { UsuarioContext } from "../../interfaces/usuario";
 import { useAuth } from "../../context/UserProvider";
 import { useNavigate } from "react-router-dom";
+import iconUser from "../../assets/img/Icon_user.png";
+import iconPassword from "../../assets/img/icon_password.png"
+import iconEmail from "../../assets/img/icon-email.png";
 import Swal from "sweetalert2";
 import Header from "../header/Header";
 import "./registroUsuarios.css";
@@ -110,7 +113,10 @@ const RegistroUsuarios = () => {
         <h2 className="title-registro">Registro Usuarios</h2>
 
         <div className="column">
-          <div>
+          <div className="column-item">
+            <div className="cont-img">
+              <img src={iconUser} alt="icon-user" className="img-icon" />
+            </div>
             <input
               type="text"
               name="usuario"
@@ -120,10 +126,14 @@ const RegistroUsuarios = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setNombre(e.target.value)
               }
+              className="input-regis"
             />
           </div>
 
-          <div>
+          <div className="column-item">
+            <div className="cont-img">
+              <img src={iconEmail} alt="icon-email" className="img-icon" />
+            </div>
             <input
               type="email"
               name="correo"
@@ -133,12 +143,16 @@ const RegistroUsuarios = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setEmail(e.target.value)
               }
+              className="input-regis"
             />
           </div>
         </div>
 
         <div className="column">
-          <div>
+          <div className="column-item">
+            <div className="cont-img">
+              <img src={iconPassword} alt="icon-password" className="img-icon"/>
+            </div>
             <input
               type="password"
               name="password"
@@ -148,10 +162,14 @@ const RegistroUsuarios = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setPassword(e.target.value)
               }
+              className="input-regis"
             />
           </div>
 
-          <div>
+          <div className="column-item">
+            <div className="cont-img">
+              <img src="" alt="" className="img-icon" />
+            </div>
             <select
               name="role"
               id="role"
@@ -159,6 +177,7 @@ const RegistroUsuarios = () => {
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setRole(e.target.value)
               }
+              className="input-regis"
             >
               <option value="" disabled defaultValue="">
                 Seleccione un role

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/UserProvider";
 import { UsuarioContext } from "../../interfaces/usuario";
+import fondoPrincipal from "../../assets/img/fondo-principal.jpeg"
 import "./navbar.css"
 
 const Navbar = () => {
@@ -21,7 +22,7 @@ const Navbar = () => {
         <div className="navbar">
 
             <div className="container-img">
-                <img src="" className="img" />
+                <img src={fondoPrincipal} className="img" />
             </div>
 
             <div className="cont-option">
