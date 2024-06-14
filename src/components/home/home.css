@@ -3,16 +3,64 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 
 .form{
-    width: 85%;
+    width: 60%;
     border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     border-radius: 10px;
     padding: 2rem;
     align-self: center;
     background-color: rgba(255, 255, 255, 0.3);
-    height: 30rem;
 }
+
+
+.cont-image-file{
+    width: 80%;
+    height: 14rem;
+    border: 1px dashed #0f406c;
+}
+
+.column-input{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.label-previuw{
+    width: 100%;
+    padding: .5rem;
+    text-align: center;
+    background-color: #0f406c;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.input-previuw{
+    display: none;
+}
+
+.md-btn-file{
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: .5rem;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    background-color: #b4c4d4;
+}
+
+
+
+
+

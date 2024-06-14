@@ -7,13 +7,12 @@ import "./home.css"
 const Home = () => {
     const { userbd, subirArchivo } = useAuth() as UsuarioContext;
     const [archivo, setArchivo] = useState<File | null>(null);
-    const [carpeta, setCarpeta] = useState<string>('');
 
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-            await subirArchivo(archivo, carpeta);
+            await subirArchivo(archivo , '');
             console.log('Archivo Subido Correctamente');  
             
         }
@@ -42,13 +41,25 @@ const Home = () => {
             <Header />
             
             <form action="" className="form" onSubmit={ handleSubmit }>
-                <input type="file" accept=".pdf" name="archivo" id="archivo" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setArchivo(e.target.files![0])} />
-                <select name="carpeta" id="carpeta" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setCarpeta(e.target.value)}>
-                    <option value="Carpeta1">Carpeta 1</option>
-                    <option value="Carpeta2">Carpeta 2</option>
-                    <option value="Carpeta3">Carpeta 3</option>
-                </select>
-                <button type="submit">Subir Archivo</button>
+                <div className="cont-image-file">
+                    
+                </div>
+
+                <div className="column-input">
+                    <label htmlFor="archivo" className="label-previuw">Seleccione un Archivo</label>
+                    <input 
+                        type="file" 
+                        accept=".pdf" 
+                        className="input-previuw"
+                        name="archivo" 
+                        id="archivo" 
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setArchivo(e.target.files![0])} 
+                    />
+                </div>
+                
+                <div className="column-input">
+                    <button type="submit" className="md-btn-file">Subir Archivo</button>
+                </div>
             </form>
         </div>
     );

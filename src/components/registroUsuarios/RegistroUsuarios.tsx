@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { UsuarioContext } from "../../interfaces/usuario";
 import { useAuth } from "../../context/UserProvider";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import Header from "../header/Header";
 import iconUser from "../../assets/img/Icon_user.png";
 import iconPassword from "../../assets/img/icon_password.png"
 import iconEmail from "../../assets/img/icon-email.png";
-import Swal from "sweetalert2";
-import Header from "../header/Header";
+import iconRole from "../../assets/img/icon_roles.png"
 import "./registroUsuarios.css";
 
 const RegistroUsuarios = () => {
@@ -168,7 +169,7 @@ const RegistroUsuarios = () => {
 
           <div className="column-item">
             <div className="cont-img">
-              <img src="" alt="" className="img-icon" />
+              <img src={iconRole} alt="icon-role" className="img-icon" />
             </div>
             <select
               name="role"
@@ -189,8 +190,8 @@ const RegistroUsuarios = () => {
         </div>
         
         <div className="column">
-          <div>
-            <button type="submit">Crear Cuenta</button>
+          <div className="btn-cont-registro">
+            <button type="submit" className="btn-registro">Crear Cuenta</button>
           </div>
         </div>
         

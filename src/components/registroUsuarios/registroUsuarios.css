@@ -3,30 +3,31 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    gap: 3.4rem;
 }
 
 .forms-registro{
-    width: 70%;
-    border: 1px solid red;
+    width: 80%;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    gap: 2rem;
+    padding: 1.5rem;
+    gap: 2.2rem;
 }
 
 .title-registro{
     text-align: center;
     color: #0f406c;
     font-weight: 700;
+    font-size: 1.5rem;
     letter-spacing: 1px;
 }
 
 .column{
     display: flex;
     gap: .5rem;
-    border: 1px solid red;
 }
 
 .column-item{
@@ -37,13 +38,28 @@
 .input-regis{
     width: 80%;
     height: 100%;
+    outline-color: #0f406c;
 
 }
+
+.input-regis::placeholder{
+    font-weight: 600;
+}
+
+.input-regis:focus{
+    outline-color: #0f406c;
+}
+
+.column-item:focus-within .cont-img {
+    background-color: #2ea8f9;
+}
+
 .cont-img{
     width: 20%;
-    height: 2.2rem;
-    padding: .5rem;
+    height: 2.4rem;
+    padding: .65rem;
     background-color: #0f406c;
+    transition: all .5s ease;
 }
 
 .img-icon{
@@ -53,5 +69,28 @@
     object-position: center center;
 }
 
+.btn-cont-registro{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-registro{
+    width: 19%;
+    border-radius: 5px;
+    background-color: #0f406c;
+    color: white;
+    font-weight: 500;
+    padding: .7rem .5rem;
+    transition: all .3s linear;
+    cursor: pointer;
+    border: 1px solid #0f406c;
+}
+
+
+.btn-registro:hover{
+    background-color: #2572b5;
+}
 
 
