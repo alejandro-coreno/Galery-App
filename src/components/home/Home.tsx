@@ -58,7 +58,8 @@ const Home = () => {
                 </div>
                 
                 <div className="column-input">
-                    <button type="submit" className="md-btn-file">Subir Archivo</button>
+                    {/* <button type="submit" className="md-btn-file">Subir Archivo</button> */}
+                    <input type="submit" className="md-btn-file" value="Subir Archivo" />
                 </div>
             </form>
         </div>

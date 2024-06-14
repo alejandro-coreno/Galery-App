@@ -17,13 +17,13 @@
     border-radius: 10px;
     padding: 2rem;
     align-self: center;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 
 .cont-image-file{
     width: 80%;
-    height: 14rem;
+    height: 13rem;
     border: 1px dashed #0f406c;
 }
 
@@ -52,11 +52,11 @@
 .md-btn-file{
     color: white;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 500;
+    cursor: pointer;
     padding: .5rem;
     text-align: center;
     letter-spacing: 1px;
-    font-size: 1rem;
     background-color: #b4c4d4;
 }
 
