@@ -1,69 +1,111 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/UserProvider.js";
 import { UsuarioContext } from "../../interfaces/usuario.js";
-import Header from "../header/Header.js"
-import "./home.css"
+import Header from "../header/Header.js";
+import imageDefault from "../../assets/img/image-previuw.png";
+import Swal from "sweetalert2";
+import "./home.css";
 
 const Home = () => {
-    const { userbd, subirArchivo } = useAuth() as UsuarioContext;
-    const [archivo, setArchivo] = useState<File | null>(null);
+  const { userbd, subirArchivo } = useAuth() as UsuarioContext;
+  const [imagePreviuw, setimagePreviuw] = useState<string>("");
+  const [archivo, setArchivo] = useState<File | null>(null);
 
 
-    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try{
-            await subirArchivo(archivo , '');
-            console.log('Archivo Subido Correctamente');  
-            
+  const messageAlert = () => {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        width: '25rem',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
         }
-        catch ( error ) {
-            console.log('Error al subir archivo', error);
-        }
+      });
+      Toast.fire({
+        icon: `${archivo ? 'success' : 'error'}`,
+        title: `${archivo ? '¡Archivo subido correctamente!' : '¡Seleccione un archivo!'}`
+      });
+      return
+  }
 
-        setArchivo(null);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!archivo) {
+      messageAlert();
+      return;
+    }
+    try {
+      await subirArchivo(archivo);
+      messageAlert();
+    } 
+    catch (error) {
+      console.log("Error al subir archivo", error);
     }
 
+    setArchivo(null);
+  };
 
-    useEffect(() => {
-        sessionStorage.setItem('login', true.toString());
-        if (userbd?.role === 'administrador') {
-            sessionStorage.setItem('adm', true.toString());
-        }
-        else {
-            sessionStorage.removeItem('adm');
-        }
-    }, []);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setArchivo(e.target.files[0]);
 
+      const url = URL.createObjectURL(e.target.files[0]);
+      setimagePreviuw(url);
+    }
+  };
 
-    return (
-        <div className="conteiner-home">
+  useEffect(() => {
+    sessionStorage.setItem("login", true.toString());
+    if (userbd?.role === "administrador") {
+      sessionStorage.setItem("adm", true.toString());
+    } else {
+      sessionStorage.removeItem("adm");
+    }
+  }, []);
 
-            <Header />
-            
-            <form action="" className="form" onSubmit={ handleSubmit }>
-                <div className="cont-image-file">
-                    
-                </div>
+  return (
+    <div className="conteiner-home">
+      <Header />
 
-                <div className="column-input">
-                    <label htmlFor="archivo" className="label-previuw">Seleccione un Archivo</label>
-                    <input 
-                        type="file" 
-                        accept=".pdf" 
-                        className="input-previuw"
-                        name="archivo" 
-                        id="archivo" 
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setArchivo(e.target.files![0])} 
-                    />
-                </div>
-                
-                <div className="column-input">
-                    {/* <button type="submit" className="md-btn-file">Subir Archivo</button> */}
-                    <input type="submit" className="md-btn-file" value="Subir Archivo" />
-                </div>
-            </form>
+      <form action="" className="form" onSubmit={handleSubmit}>
+        <div className="cont-image-file">
+          {archivo ? (
+            <img
+              src={imagePreviuw}
+              alt="image_previuw"
+              className="image-previuw"
+            />
+          ) : (
+            <img src={imageDefault} alt="default" />
+          )}
         </div>
-    );
-}
+
+        <div className="column-input">
+          <label htmlFor="archivo" className="label-previuw">
+            Seleccione un Archivo
+          </label>
+          <input
+            type="file"
+            accept=""
+            className="input-previuw"
+            name="archivo"
+            id="archivo"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="column-input">
+          {/* <button type="submit" className="md-btn-file">Subir Archivo</button> */}
+          <input type="submit" className="md-btn-file" value="Subir Archivo" />
+        </div>
+      </form>
+    </div>
+  );
+};
 
 export default Home;

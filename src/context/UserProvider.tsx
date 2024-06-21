@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, on
 import { setDoc, doc, getDoc, DocumentData, onSnapshot, addDoc, collection } from "firebase/firestore";
 import { UploadResult, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Usuario } from "../interfaces/usuario";
+import { uid } from "uid";
 import UserContext from "./UserContext";
 
 interface Props {
@@ -90,30 +91,19 @@ export const UserProveedor = ({ children }: Props) => {
         }
     }
 
-    const subirArchivo = async (file: File | null, carpeta: string) => {
-        
+    const subirArchivo = async (file: File | null ) => {
         // Creamos la referencia del archivo 
-        const storageRef = ref(storage, `${file?.name}`);
-        const date = new Date();
+        const storageRef = ref(storage, `image/${uid()}/${file?.name}`);
 
         // metodo para poder subit el archivo a la nube 1.- se agrega la referencia 2.- archivo;
         const response: UploadResult = await uploadBytes(storageRef, file!);
         const getUrl: string = await getDownloadURL(response.ref);
-
-        // Agregamos el documento a la coleccion archivos, referencia usuario
-        const archivoRef = await addDoc(collection(db, `usuarios/${user?.uid}/archivos`), {
-            usuario: userbd?.usuario,
-            nombre: file?.name,
-            url: getUrl,
-            fecha: date
-        });
 
         // Se agregan todos los archivos de manera general para el administrador
         await addDoc(collection(db, 'archivosGeneral'), {
             usuario: userbd?.usuario,
             nombre: file?.name,
             url: getUrl,
-            fecha: date
         });
     }
 

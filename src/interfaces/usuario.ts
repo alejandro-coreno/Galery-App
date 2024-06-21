@@ -12,7 +12,7 @@ export interface UsuarioContext {
     userbd:  Usuario | null;
     nuevaCuenta: boolean;
     login: (email: string , password: string) => void;
-    subirArchivo: (file: File | null, carpeta: string) => void;
+    subirArchivo: (file: File | null) => void;
     registro: (email: string , password: string, role: string, user: string) => void;
     salir: () => Promise<void>;
 }
