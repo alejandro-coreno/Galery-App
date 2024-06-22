@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore"
 import { db } from "../../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { Usuario, UsuarioContext } from "../../interfaces/usuario";
 import { useAuth } from "../../context/UserProvider";
+import User from "../user/User";
 import Header from "../header/Header";
 import "./users.css"
 
@@ -42,25 +43,34 @@ const Users = () => {
     return (
         <div className="conteiner-usuarios">
             <Header />
-            <div>
-                <h1>Tabla de Usuarios</h1>
-                <hr/>
+            <div className="conteiner-users">
+                <h2 className="title-users">Tabla de Usuarios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                            <th>Role</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
 
-                {
-                    usuarios.length > 0 &&
-
-                    usuarios.map((usuario) =>
-                        <div key={usuario.id} style={{margin: '10px'}}>
+                    <tbody>
+                        {
+                            usuarios.length > 0 && usuarios.map((user, index) => 
                             
-                            <h4>ID: {usuario.id}</h4>
-                            <h5>Usuario: {usuario.usuario}</h5>
-                            <h5>Correo: {usuario.correo}</h5>
-                            <h5>Role: {usuario.role}</h5>
-                            <h5>Password: {usuario.password}</h5>
-                            <hr style={{ margin: '15px' }} />
-                        </div>
-                    )
-                }
+                                <tr key={index}>
+                                    <User 
+                                        usuario={user.usuario !}
+                                        correo={user.correo}
+                                        role={user.role}
+                                    /> 
+                                </tr>
+                            
+                            )
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     );

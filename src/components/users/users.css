@@ -5,3 +5,56 @@
     flex-direction: column;
     gap: 2rem;
 }
+
+.conteiner-users{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.title-users{
+    color: #0f406c;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+table {
+    border: 1px solid #0f406c;
+    border-collapse: collapse;
+
+}
+
+table thead  tr th{
+    color: #0f406c;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: .3rem;
+    letter-spacing: 1px;
+    border: 1px solid blue;
+}
+
+table tbody tr td{
+    text-align: center;
+    color: #0f406c;
+    font-size: 1rem;
+    padding: .3rem;
+    letter-spacing: 1px;
+    border: 1px solid #0f406c;
+}
+
+
+.icon-users{
+    cursor: pointer;
+}
+
+.label{
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+}
+
+
+.update{
+    margin-left: .9rem;
+}
