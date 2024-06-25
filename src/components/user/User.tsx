@@ -1,22 +1,56 @@
 import { useState } from "react";
+import { updateDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase/firebaseConfig";
+import Swal from "sweetalert2";
 import iconEditar from "../../assets/img/icon_edit.png"
 import iconCerrar from "../../assets/img/icon_cerrar.png";
 import iconUpdate from "../../assets/img/icon_update.png";
+import "./user.css"
 
 interface Props {
+    id: string;
     usuario: string
     correo: string;
     role: string;
 }
 
-const User = ({usuario, correo, role}: Props) => {
+const User = ({usuario, correo, role, id}: Props) => {
 
     const [editar, setEditar] = useState<boolean>(false);
     const [editarUsuario, setEditarUsuario] = useState<string>(usuario);
     const [editarCorreo, setEditarCorreo] = useState<string>(correo)
     const [editarRole, setEditarRole] = useState<string>(role);
 
-
+    const updateData = async (id: string) => {
+        try {
+            await updateDoc(doc(db, 'usuarios', id), {
+                usuario: editarUsuario,
+                correo: editarCorreo,
+                role: editarRole
+            });
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                width: 'auto',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "success",
+                title: `¡Usuario: "${editarUsuario}" actualizado correctamente!`
+              });
+        }
+        catch ( error ){
+            console.log( error );
+        }
+       
+        setEditar(!editar);
+    }
 
     return (
        <>
@@ -26,6 +60,7 @@ const User = ({usuario, correo, role}: Props) => {
                 ?
                     <input
                         className="label"
+                        autoFocus
                         id="usuario" 
                         type="text" 
                         name="usuario" 
@@ -61,15 +96,17 @@ const User = ({usuario, correo, role}: Props) => {
             {
                 editar 
                 ?
-                    <input
-                        className="label"
-                        id="role"
-                        type="text" 
-                        name="role"
-                        value={editarRole} 
-                        onChange={(e) => setEditarRole(e.target.value)}
-                    />
+                    <select 
+                        name="role" 
+                        id="role" 
+                        className="label" 
+                        onChange={(e) => setEditarRole(e.target.value)}>
+                        <option defaultValue="" value="">Seleccione una Opción</option>
+                        <option value="analista">Analista</option>
+                        <option value="administrardor">Administrador</option>
+                    </select>
                 :
+                
                 role
             }
             
@@ -91,7 +128,7 @@ const User = ({usuario, correo, role}: Props) => {
                             className="icon-users update"
                             src={iconUpdate} 
                             alt="update"
-                            onClick={() => alert('Actualizar usuario')}
+                            onClick={() => updateData(id)}
                         />
                     
                     </>
@@ -105,7 +142,6 @@ const User = ({usuario, correo, role}: Props) => {
                         onClick={() => setEditar(!editar)}
                     />
             }
-
 
           </td>
 

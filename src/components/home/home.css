@@ -1,6 +1,6 @@
 .conteiner-home{
     width: 80%;
-    border: 1px solid black;
+    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     gap: 4rem;

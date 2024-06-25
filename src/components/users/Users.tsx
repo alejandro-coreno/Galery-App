@@ -61,6 +61,7 @@ const Users = () => {
                             
                                 <tr key={index}>
                                     <User 
+                                        id={user.id !}
                                         usuario={user.usuario !}
                                         correo={user.correo}
                                         role={user.role}

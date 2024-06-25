@@ -1,0 +1,19 @@
+
+.icon-users{
+    cursor: pointer;
+}
+
+.label{
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    font-weight: 600;
+    color: white;
+    border: 0;
+    background-color: #0f416ca8; 
+}
+
+
+.update{
+    margin-left: .9rem;
+}

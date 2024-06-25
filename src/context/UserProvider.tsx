@@ -102,7 +102,7 @@ export const UserProveedor = ({ children }: Props) => {
         // Se agregan todos los archivos de manera general para el administrador
         await addDoc(collection(db, 'archivosGeneral'), {
             usuario: userbd?.usuario,
-            nombre: file?.name,
+            nombreImage: file?.name,
             url: getUrl,
         });
     }
