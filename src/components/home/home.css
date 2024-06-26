@@ -64,8 +64,11 @@
     cursor: pointer;
     font-weight: 500;
     cursor: pointer;
+    border: 0;
+    border: 1px solid #0f406c;
     padding: .5rem;
     text-align: center;
+    font-weight: 700;
     letter-spacing: 1px;
     background-color: #b4c4d4;
 }

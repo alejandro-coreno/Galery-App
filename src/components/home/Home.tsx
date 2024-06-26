@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/UserProvider.js";
 import { UsuarioContext } from "../../interfaces/usuario.js";
 import Header from "../header/Header.js";
@@ -11,6 +12,7 @@ const Home = () => {
   const [imagePreviuw, setimagePreviuw] = useState<string>("");
   const [archivo, setArchivo] = useState<File | null>(null);
 
+  const navigate = useNavigate();
 
   const messageAlert = () => {
     const Toast = Swal.mixin({
@@ -41,13 +43,15 @@ const Home = () => {
     }
     try {
       await subirArchivo(archivo);
-      messageAlert();
+      await messageAlert();
     } 
     catch (error) {
       console.log("Error al subir archivo", error);
     }
 
     setArchivo(null);
+    navigate('/mostrar');
+
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

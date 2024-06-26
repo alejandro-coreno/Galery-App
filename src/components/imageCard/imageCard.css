@@ -1,0 +1,53 @@
+.conteiner-image{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.conteiner-card {
+    width: 31%;
+    display: flex;
+    padding: .8rem;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    gap: 1rem;
+    border-radius: 8px;
+    flex-direction: column;
+}
+
+.cont-image{
+    width: 100% ;
+    height: 12rem;
+}
+
+.image-component{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.title-image{
+    font-weight: 600;
+    color: #0f416c
+}
+
+.conteiner-na{
+    width: 100%;
+    height: 50vh;
+    display: grid;
+    place-items: center;
+}
+
+.title-sin-image{
+    font-weight: 500;
+    font-style: italic;
+    color: #0f416c;
+    letter-spacing: 1px;
+}
+
+.md-title-image{
+    color:  #127ddc;
+}

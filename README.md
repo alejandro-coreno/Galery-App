@@ -1,1 +1,2 @@
-# React + TypeScript + Vite
+## Desarrollado con las siguientes tecnologias
+### React + TypeScript + Vite + Firebase

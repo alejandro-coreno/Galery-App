@@ -103,7 +103,7 @@ const User = ({usuario, correo, role, id}: Props) => {
                         onChange={(e) => setEditarRole(e.target.value)}>
                         <option defaultValue="" value="">Seleccione una Opción</option>
                         <option value="analista">Analista</option>
-                        <option value="administrardor">Administrador</option>
+                        <option value="administrador">Administrador</option>
                     </select>
                 :
                 
